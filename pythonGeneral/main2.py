@@ -35,27 +35,27 @@
 #
 # print("The mission is done! Click 'Check Solution' to earn rewards!")
 
-def checkio(words: str) -> bool:
-    # add your code here
-    lwords = list(words.split(" "))
-    c = 0
-    for w in lwords:
-        if w.isalpha():
-            c += 1
-            if c == 3:
-                break
-        else:
-            c = 0
-    return c == 3
-
-
-print("Example:")
-print(checkio("Hello World hello"))
-
-# assert checkio("Hello World hello") == True
-# assert checkio("He is 123 man") == False
-# assert checkio("1 2 3 4") == False
-# assert checkio("bla bla bla bla") == True
-# assert checkio("Hi") == False
-assert checkio('one two 3 four five six 7 eight 9 ten eleven 12') == True
-print("The mission is done! Click 'Check Solution' to earn rewards!")
+# def checkio(words: str) -> bool:
+#     # add your code here
+#     lwords = list(words.split(" "))
+#     c = 0
+#     for w in lwords:
+#         if w.isalpha():
+#             c += 1
+#             if c == 3:
+#                 break
+#         else:
+#             c = 0
+#     return c == 3
+#
+#
+# print("Example:")
+# print(checkio("Hello World hello"))
+#
+# # assert checkio("Hello World hello") == True
+# # assert checkio("He is 123 man") == False
+# # assert checkio("1 2 3 4") == False
+# # assert checkio("bla bla bla bla") == True
+# # assert checkio("Hi") == False
+# assert checkio('one two 3 four five six 7 eight 9 ten eleven 12') == True
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
