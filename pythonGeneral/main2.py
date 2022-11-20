@@ -15,6 +15,8 @@
 """
 Next code
 """
+import operator
+
 # def beginning_zeros(a: str) -> int:
 #     # your code here
 #     c = 0
@@ -348,3 +350,347 @@ Speech Module
 """
 Next task
 """
+# def goes_after(word: str, first: str, second: str) -> bool:
+#     # your code here
+#     if first + second in word:
+#         return word.index(first) == word.index(second) - 1
+#     else:
+#         return False
+#
+# print("Example:")
+# print(goes_after("world", "w", "o"))
+#
+# # assert goes_after("world", "w", "o") == True
+# # assert goes_after("world", "w", "r") == False
+# assert goes_after("world", "l", "o") == False
+# assert goes_after("panorama", "a", "n") == True
+# assert goes_after("list", "l", "o") == False
+# assert goes_after("", "l", "o") == False
+# assert goes_after("list", "l", "l") == False
+# assert goes_after("world", "d", "w") == False
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+
+"""
+Bird Language
+"""
+# The bird converts words by two rules:
+# - after each consonant letter the bird appends a random vowel letter (l ⇒ la or le);
+# - after each vowel letter the bird appends two of the same letter (a ⇒ aaa);
+# Vowels letters == "aeiouy".
+# You are given an ornithological phrase as several words which are separated by white-spaces (each pair of words by one whitespace). The bird does not know how to punctuate its phrases and only speaks words as letters. All words are given in lowercase. You should translate this phrase from the bird language to something more understandable.
+# def translate(text: str) -> str:
+#     # your code here
+#     vovels = "aeiouy"
+#
+#     # rule 2
+#     for v in vovels:
+#         text = text.replace(v*3, v)
+#     # rule 1
+#     output_text = text.split(' ')
+#     for wcount, word in enumerate(text.split(' ')):
+#         to_remove = list()
+#         for lcount, letter in enumerate(word):
+#             if letter not in vovels and word[lcount+1] in vovels:
+#                 if [word[lcount:lcount+2], word[lcount]] not in to_remove:
+#                     to_remove.append([word[lcount:lcount+2], word[lcount]])
+#                 # output_text = output_text.replace(text[count:count+2], letter)
+#
+#         for each in to_remove:
+#             word = word.replace(each[0], each[1])
+#         output_text[wcount] = word
+#     return ' '.join(output_text)
+#
+#
+# print("Example:")
+# print(translate("hieeelalaooo"))
+#
+# assert translate("hieeelalaooo") == "hello"
+# assert translate("hoooowe yyyooouuu duoooiiine") == "how you doin"
+# assert translate("aaa bo cy da eee fe") == "a b c d e f"
+# assert translate("sooooso aaaaaaaaa") == "sos aaa"
+# assert translate('aaabucidyeeefigihoiiijukulemonoooopyqorysotauuuviwuxayyyzu ziyyyxuwivouuutesiriqopaooonimelykijaiiihigefaeeedacybuaaa') == 'abcdefghijklmnopqrstuvwxyz zyxwvutsrqponmlkjihgfedcba'
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+End Zeros
+"""
+# Try to find out how many zeros a given number has at the end.
+# def end_zeros(a: int) -> int:
+#     # your code here
+#     return len(str(a)) - len(str(a).rstrip('0'))
+#
+#
+# print("Example:")
+# print(end_zeros(10))
+#
+# assert end_zeros(0) == 1
+# assert end_zeros(1) == 0
+# assert end_zeros(10) == 1
+# assert end_zeros(101) == 0
+# assert end_zeros(245) == 0
+# assert end_zeros(100100) == 2
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+Feed Pigeons
+"""
+# I start to feed one of the pigeons. A minute later two more fly by and a minute after that another 3. Then 4, and so on (Ex: 1+2+3+4+...). One portion of food lasts a pigeon for a minute, but in case there's not enough food for all the birds, the pigeons who arrived first ate first. Pigeons are hungry animals and eat without knowing when to stop. If I have N portions of bird feed, how many pigeons will be fed with at least one portion of wheat?
+# How it is used: this task illustrates how we can model various situations. Of course, the model has a limited approximation, but often-times we don't need a perfect model.
+#
+# Precondition: 0 < N < 10 5 .
+# def checkio(food: int) -> int:
+#     # your code here
+#     pigeon = 0
+#     minute = 1
+#     while food - pigeon > 0:
+#         pigeon += minute
+#         if food - pigeon >= 0:
+#             food -= pigeon
+#         else:
+#             pigeon -= pigeon - food
+#         minute += 1
+#     return pigeon
+#
+#
+# print("Example:")
+# print(checkio(5))
+#
+# assert checkio(1) == 1
+# assert checkio(3) == 2
+# assert checkio(5) == 3
+# assert checkio(10) == 6
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+Excel Column Number
+"""
+# Given a string that represents the column title as appears in an Excel sheet, return its corresponding column number.
+# def column_number(name: str) -> int:
+#     # your code here
+#     abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#     counter = 0
+#     for letter in ''.join(reversed(name)):
+#         if counter == 0:
+#             result = abc.index(letter) + 1
+#         else:
+#             result += (abc.index(letter) + 1) * len(abc) ** counter
+#         counter += 1
+#     return result
+#     #return len(abc) ** len(name) + (abc.index(name[-1]) + 1)
+#
+#
+# print("Example:")
+# print(column_number("BA"))
+# print(column_number("FXSHRXW"))
+#
+# assert column_number("A") == 1
+# assert column_number("Z") == 26
+# assert column_number("AB") == 28
+# assert column_number("ZY") == 701
+# assert column_number('FXSHRXW') == 2147483647
+# print("The first mission is done! Click 'Check' to earn cool rewards!")
+
+"""
+Digits Multiplication
+"""
+# You are given a positive integer. Your function should calculate the product of the digits excluding any zeroes.
+# For example: The number given is 123405. The result will be 1*2*3*4*5=120 (don't forget to exclude zeroes).
+
+# def checkio(number: int) -> int:
+#     # your code here
+#     result = 1
+#     for i in str(number).replace('0',''):
+#         result *= int(i)
+#     return result
+#
+# print("Example:")
+# print(checkio(123405))
+#
+# assert checkio(123405) == 120
+# assert checkio(999) == 729
+# assert checkio(1000) == 1
+# assert checkio(1111) == 1
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+
+"""
+All Upper I
+"""
+# Check if a given string has all symbols in upper case. If the string is empty or doesn't have any letter in it - function should return True.
+# def is_all_upper(text: str) -> bool:
+#     # your code here
+#     return text.isupper() or text.replace(' ','') == "" or text.replace(' ','').isdigit()
+#
+#
+# print("Example:")
+# print(is_all_upper("ALL UPPER"))
+#
+# assert is_all_upper("ALL UPPER") == True
+# assert is_all_upper("all lower") == False
+# assert is_all_upper("mixed UPPER and lower") == False
+# assert is_all_upper("") == True
+# assert is_all_upper("444") == True
+# assert is_all_upper("55 55 5 ") == True
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+
+"""
+Conversion from CamelCase
+"""
+# Your mission is to convert the name of a function (a string) from CamelCase ("MyFunctionName") into the Python format ("my_function_name") where all chars are in lowercase and all words are concatenated with an intervening underscore symbol "_".
+# def from_camel_case(name: str) -> str:
+#     # replace this for solution
+#     pname = list()
+#     counter = 0
+#     for letter in name:
+#         if letter.isupper() and counter > 0:
+#             pname.append("_" + letter.lower())
+#         else:
+#             pname.append(letter.lower())
+#         counter += 1
+#     return ''.join(pname)
+#
+# print("Example:")
+# print(from_camel_case("MyFunctionName"))
+#
+# assert from_camel_case("MyFunctionName") == "my_function_name"
+# assert from_camel_case("IPhone") == "i_phone"
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+
+"""
+Conversion into CamelCase
+"""
+# Your mission is to convert the name of a function (a string) from the Python format (for example "my_function_name") into CamelCase ("MyFunctionName"), where the first char of every word is in uppercase and all words are concatenated without any intervening characters.
+# def to_camel_case(name: str) -> str:
+#     # replace this for solution
+#     upper = 1
+#     camel_name = list()
+#     for letter in name:
+#         if upper == 1:
+#             camel_name.append(letter.upper())
+#             upper = 0
+#         elif letter == '_':
+#             upper = 1
+#         else:
+#             camel_name.append(letter)
+#
+#     return ''.join(camel_name)
+#
+# print("Example:")
+# print(to_camel_case("my_function_name"))
+#
+# assert to_camel_case("my_function_name") == "MyFunctionName"
+# assert to_camel_case("i_phone") == "IPhone"
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+
+"""
+The Most Wanted Letter
+"""
+# You are given a text, which contains different English letters and punctuation symbols. You should find the most frequent letter in the text. The letter returned must be in lower case.
+# While checking for the most wanted letter, casing does not matter, so for the purpose of your search, "A" == "a". Make sure you do not count punctuation symbols, digits and whitespaces, only letters.
+#
+# If you have two or more letters with the same frequency , then return the letter which comes first in the Latin alphabet. For example -- "one" contains "o", "n", "e" only once for each, thus we choose "e".
+
+# How it is used: For most decryption tasks you need to know the frequency of occurrence for various letters in a section of text. For example: we can easily crack a simple addition or substitution cipher if we know the frequency in which letters appear. This is interesting stuff for language experts!
+#
+# Precondition :
+# A text contains only ASCII symbols.
+# 0 < len(text) ≤ 10 5
+# import operator
+# def checkio(text: str) -> str:
+#     # your code here
+#     freq = {}
+#     text = text.lower()
+#     for letter in text:
+#         if letter.isalpha():
+#             if letter in freq:
+#                 freq[letter] += 1
+#             else:
+#                 freq[letter] = 1
+#     result = sorted(freq.items(), key=operator.itemgetter(1), reverse=True)
+#     # process equal frequency items
+#     var = result[0][1]
+#     result_list = []
+#     for line in result:
+#         if line[1] == var:
+#             result_list.append(line[0])
+#
+#     return sorted(result_list)[0]
+#
+# print("Example:")
+# print(checkio("Hello World!"))
+#
+# # assert checkio("Hello World!") == "l"
+# # assert checkio("How do you do?") == "o"
+# # assert checkio("One") == "e"
+# # assert checkio("Oops!") == "o"
+# assert checkio("AAaooo!!!!") == "a"
+# assert checkio("abe") == "a"
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+
+"""
+Middle Characters
+"""
+# You are given some string where you need to find its middle character(s). The string may contain one word, a few symbols or a whole sentence. If the length of the string is even, then you should return two middle characters, but if the length is odd, return just one. For more details look at the Example.
+# def middle(text: str) -> str:
+#     # replace this for solution
+#     if len(text) % 2 == 0:
+#         return text[int(len(text)/2 - 1):int(len(text)/2+1)]
+#     else:
+#         return text[int(len(text)//2):int(len(text)//2 + 1)]
+#
+# print("Example:")
+# print(middle("example"))
+#
+# assert middle("example") == "m"
+# assert middle("test") == "es"
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+Cut Sentence
+"""
+# Your task in this mission is to truncate a sentence to a length that does not exceed a given number of characters.
+#
+# If the given sentence already is short enough, you don't have to do anything to it. But if it needs to be truncated, the omission must be indicated by concatenating an ellipsis ("...") to the end of the shortened sentence.
+#
+# The shortened sentence can contain complete words and spaces.
+# It must neither contain truncated words nor trailing spaces.
+# The ellipsis has been taken into account for the allowed number of characters, so it does not count against the given length.
+# line.startswith(' ') == False
+# 0 < len(line) ≤ 79
+# 0 < length ≤ 76
+# all(char in string.ascii_letters + ' ' for char in line)
+def cut_sentence(line: str, length: int) -> str:
+    """
+    Cut a given sentence, so it becomes shorter than or equal to a given length.
+    """
+    # your code here
+#     result_line = []
+#     if len(line) > length:
+#         #line = line[:length-2].rstrip(' ') + '...'
+#         for word in line.split(' '):
+#             if len(' '.join(result_line) + ' ' + word) <= length:
+#                 result_line.append(word)
+#             else:
+#                 break
+#         result = ' '.join(result_line) + '...'
+#     else:
+#         result = line
+#     return result
+#
+# print("Example:")
+# print(cut_sentence("Hi my name is Alex", 4))
+# #print(cut_sentence('OMG you did it', 4))
+#
+# assert cut_sentence("Hi my name is Alex", 8) == "Hi my..."
+# assert cut_sentence("Hi my name is Alex", 4) == "Hi..."
+# assert cut_sentence("Hi my name is Alex", 20) == "Hi my name is Alex"
+# assert cut_sentence("Hi my name is Alex", 18) == "Hi my name is Alex"
+# assert cut_sentence('Hi my name is Alex', 9) == 'Hi my...'
+# assert cut_sentence('OMG you did it', 4) == 'OMG...'
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+
+
