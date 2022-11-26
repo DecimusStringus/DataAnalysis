@@ -301,7 +301,6 @@ def is_majority(items: list[bool]) -> bool:
     # your code here
     return True
 
-
 print("Example:")
 print(is_majority([True, True, False, True, False]))
 
