@@ -299,17 +299,60 @@ Majority
 # Output: A Boolean.
 def is_majority(items: list[bool]) -> bool:
     # your code here
-    return True
+    # t_count = 0
+    # f_count = 0
+    # if items:
+    #     for item in items:
+    #         if item == True:
+    #             t_count += 1
+    #         elif item == False:
+    #             f_count += 1
+    #     if t_count > f_count:
+    #         return True
+    #
+    # return False
+# The code above is commented because it is clumsy
+# The code below is better
+#     if items:
+#         my_dict = {item: items.count(item) for item in items}
+#         if True in my_dict.keys() and False in my_dict.keys():
+#             if my_dict[1] > my_dict[0]:
+#                 return True
+#         elif True in my_dict.keys():
+#             return True
+#     return False
+#
+# print("Example:")
+# print(is_majority([True, True, False, True, False]))
+#
+# assert is_majority([True, True, False, True, False]) == True
+# assert is_majority([True, True, False]) == True
+# assert is_majority([True, True, False, False]) == False
+# assert is_majority([True, True, False, False, False]) == False
+# assert is_majority([False]) == False
+# assert is_majority([True]) == True
+# assert is_majority([]) == False
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+Backward Each Word
+"""
+# In a given string you should reverse every word, but the words should stay in their places.
+# Input: A string.
+# Output: A string.
+def backward_string_by_word(text: str) -> str:
+    # your code here
+    return None
+
 
 print("Example:")
-print(is_majority([True, True, False, True, False]))
+print(backward_string_by_word(""))
 
-assert is_majority([True, True, False, True, False]) == True
-assert is_majority([True, True, False]) == True
-assert is_majority([True, True, False, False]) == False
-assert is_majority([True, True, False, False, False]) == False
-assert is_majority([False]) == False
-assert is_majority([True]) == True
-assert is_majority([]) == False
+assert backward_string_by_word("") == ""
+assert backward_string_by_word("world") == "dlrow"
+assert backward_string_by_word("hello world") == "olleh dlrow"
+assert backward_string_by_word("hello   world") == "olleh   dlrow"
+assert backward_string_by_word("welcome to a game") == "emoclew ot a emag"
 
 print("The mission is done! Click 'Check Solution' to earn rewards!")
+
