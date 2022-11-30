@@ -297,7 +297,7 @@ Majority
 # Some cases worth mentioning: 1) an empty list should return False; 2) if True-s and False-s have an equal amount, function should return False.
 # Input: A list of booleans.
 # Output: A Boolean.
-def is_majority(items: list[bool]) -> bool:
+# def is_majority(items: list[bool]) -> bool:
     # your code here
     # t_count = 0
     # f_count = 0
@@ -340,19 +340,31 @@ Backward Each Word
 # In a given string you should reverse every word, but the words should stay in their places.
 # Input: A string.
 # Output: A string.
-def backward_string_by_word(text: str) -> str:
-    # your code here
-    return None
+# def backward_string_by_word(text: str) -> str:
+#     # your code here
+#     if text != "":
+#         list_text = []
+#         if ' ' in text:
+#             for word in text.split(' '):
+#                 list_text.append(word[::-1])
+#             if len(list_text) > 1:
+#                 return ' '.join(list_text)
+#             else:
+#                 return list_text[0]
+#         else:
+#             return text[::-1]
+#     else:
+#         return ""
+#
+# print("Example:")
+# print(backward_string_by_word(""))
+#
+# assert backward_string_by_word("") == ""
+# assert backward_string_by_word("world") == "dlrow"
+# assert backward_string_by_word("hello world") == "olleh dlrow"
+# assert backward_string_by_word("hello   world") == "olleh   dlrow"
+# assert backward_string_by_word("welcome to a game") == "emoclew ot a emag"
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
 
-
-print("Example:")
-print(backward_string_by_word(""))
-
-assert backward_string_by_word("") == ""
-assert backward_string_by_word("world") == "dlrow"
-assert backward_string_by_word("hello world") == "olleh dlrow"
-assert backward_string_by_word("hello   world") == "olleh   dlrow"
-assert backward_string_by_word("welcome to a game") == "emoclew ot a emag"
-
-print("The mission is done! Click 'Check Solution' to earn rewards!")
 
