@@ -366,5 +366,92 @@ Backward Each Word
 # assert backward_string_by_word("welcome to a game") == "emoclew ot a emag"
 #
 # print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+Follow Instructions
+"""
+# You’ve received a letter from a friend whom you haven't seen or heard from for a while. In this letter he gives you instructions on how to find a hidden treasure!
+# In this mission you should follow a given list of instructions which will get you to a certain point on the map. A list of instructions is a string, each letter of this string points you in the direction of your next step.
+# The letter "f" - tells you to move forward, "b" - backward, "l" - left, and "r" - right.
+# It means that if the list of your instructions is "fflff" then you should move forward two times, make one step to the left and then again move two times forward.
+# Now, let's imagine that you are in the position (0, 0) . If you move forward your position will change to (0, 1) . If you move again it will be (0, 2) . If your next step is to the left then your position will become (-1, 2) . After the next two steps forward your coordinates will be (-1, 4) .
+# Your goal is to find your final coordinates. Like in our case they are (-1, 4) .
+# Input: A string.
+# Output: A tuple or list of two integers.
+# def follow(instructions: str) -> tuple[int, int] | list[int]:
+#     # your code here
+#     coordinates = [0, 0]
+#     for char in instructions:
+#         if char == 'f':
+#             coordinates[1] += 1
+#         elif char == 'b':
+#             coordinates[1] -= 1
+#         elif char == 'r':
+#             coordinates[0] += 1
+#         elif char == 'l':
+#             coordinates[0] -= 1
+#     return coordinates
+#
+#
+# print("Example:")
+# print(list(follow("fflff")))
+#
+# assert list(follow("fflff")) == [-1, 4]
+# assert list(follow("ffrff")) == [1, 4]
+# assert list(follow("fblr")) == [0, 0]
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+The Most Frequent
+"""
+# You have a sequence of strings, and you’d like to determine the most frequently occurring string in the sequence. It can be only one.
+# Input: non empty list of strings.
+# Output: a string.
+# def most_frequent(data: list[str]) -> str:
+#     # your code here
+#     my_dict = {item: data.count(item) for item in data}
+#     # return max(my_dict, key=my_dict.get) # another way to do it
+#     return max(my_dict, key=lambda key: my_dict[key])
+#
+#
+# print("Example:")
+# print(most_frequent(["a", "b", "c", "a", "b", "a"]))
+#
+# assert most_frequent(["a", "b", "c", "a", "b", "a"]) == "a"
+# assert most_frequent(["a", "a", "bi", "bi", "bi"]) == "bi"
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+Compress List
+"""
+# A given list should be "compressed" in a way so, instead of two (or more) equal elements, staying one after another, there should be only one in the result Iterable (list, tuple, iterator, generator).
+# Input: A list.
+# Output: "Compressed" List or another Iterable (tuple, iterator, generator).
+from typing import Iterable
 
+def compress(items: list[int]) -> Iterable[int]:
+    # your code here
+    return []
+
+
+print("Example:")
+print(list(compress([5, 5, 5, 4, 5, 6, 6, 5, 5, 7, 8, 0, 0])))
+
+assert list(compress([5, 5, 5, 4, 5, 6, 6, 5, 5, 7, 8, 0, 0])) == [
+    5,
+    4,
+    5,
+    6,
+    5,
+    7,
+    8,
+    0,
+]
+assert list(compress([1, 1, 1, 1, 2, 2, 2, 1, 1, 1])) == [1, 2, 1]
+assert list(compress([7, 7])) == [7]
+assert list(compress([])) == []
+assert list(compress([1, 2, 3, 4])) == [1, 2, 3, 4]
+assert list(compress([9, 9, 9, 9, 9, 9, 9])) == [9]
+assert list(compress([9, 9, 9, 9, 9, 9, 9, 0, 9, 9, 9, 9, 9, 9])) == [9, 0, 9]
+
+print("The mission is done! Click 'Check Solution' to earn rewards!")
 
