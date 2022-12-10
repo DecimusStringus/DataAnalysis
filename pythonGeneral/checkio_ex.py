@@ -426,32 +426,115 @@ Compress List
 # A given list should be "compressed" in a way so, instead of two (or more) equal elements, staying one after another, there should be only one in the result Iterable (list, tuple, iterator, generator).
 # Input: A list.
 # Output: "Compressed" List or another Iterable (tuple, iterator, generator).
-from typing import Iterable
-
-def compress(items: list[int]) -> Iterable[int]:
+# from typing import Iterable
+#
+# def compress(items: list[int]) -> Iterable[int]:
+#     # your code here
+#     result = []
+#     for it_count, item in enumerate(items):
+#         if it_count == 0:
+#             result.append(item)
+#         elif items[it_count - 1] != item:
+#             result.append(item)
+#     return result
+#
+#
+# print("Example:")
+# print(list(compress([5, 5, 5, 4, 5, 6, 6, 5, 5, 7, 8, 0, 0])))
+#
+# assert list(compress([5, 5, 5, 4, 5, 6, 6, 5, 5, 7, 8, 0, 0])) == [
+#     5,
+#     4,
+#     5,
+#     6,
+#     5,
+#     7,
+#     8,
+#     0,
+# ]
+# assert list(compress([1, 1, 1, 1, 2, 2, 2, 1, 1, 1])) == [1, 2, 1]
+# assert list(compress([7, 7])) == [7]
+# assert list(compress([])) == []
+# assert list(compress([1, 2, 3, 4])) == [1, 2, 3, 4]
+# assert list(compress([9, 9, 9, 9, 9, 9, 9])) == [9]
+# assert list(compress([9, 9, 9, 9, 9, 9, 9, 0, 9, 9, 9, 9, 9, 9])) == [9, 0, 9]
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+Remove All After
+"""
+# Not all of the elements are important. What you need to do here is to remove all of the elements after the given one from list.
+# For illustration, we have a list [1, 2, 3, 4, 5] and we need to remove all the elements that go after 3 - which is 4 and 5.
+# We have two edge cases here:
+# if a cutting element cannot be found, then the list shouldn't be changed;
+# if the list is empty, then it should remains empty.
+# Input: List of integers and the border element integer.
+# Output: List or other Iterable (tuple, iterator, generator ...) of integers.
+# from typing import Iterable
+#
+# def remove_all_after(items: list[int], border: int) -> Iterable[int]:
+#     # your code here
+#     if items:
+#         if border is None:
+#             result = items
+#         elif border == 0 or border not in items:
+#             result = items
+#         else:
+#             result = items[0:items.index(border)+1]
+#     else:
+#         result = []
+#     return result
+#
+#
+# print("Example:")
+# print(list(remove_all_after([1, 2, 3, 4, 5], 3)))
+#
+# assert list(remove_all_after([1, 2, 3, 4, 5], 3)) == [1, 2, 3]
+# assert list(remove_all_after([1, 1, 2, 2, 3, 3], 2)) == [1, 1, 2]
+# assert list(remove_all_after([1, 1, 2, 4, 2, 3, 4], 2)) == [1, 1, 2]
+# assert list(remove_all_after([1, 1, 5, 6, 7], 2)) == [1, 1, 5, 6, 7]
+# assert list(remove_all_after([], 0)) == []
+# assert list(remove_all_after([7, 7, 7, 7, 7, 7, 7, 7, 7], 7)) == [7]
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+Changing direction
+"""
+# You are given a list of integers. Your task in this mission is to find, how many times the sorting direction was changed in the given list. If the elements are equal - the previous sorting direction remains the same, if the sequence starts from the same elements - look for the next different to determine the sorting direction.
+# There are three sorting directions:
+# on the chunk 1, 2, 2 - up (increasing);
+# on the chunk 2, 1 - down (decreasing);
+# and on the chunk 1, 2, 2 - up again.
+# So, you have two points of changing the sorting direction: #1 - from up to down, and #2 - from down to up. That's the result your function should return.
+# Input: A list of integers.
+# Output: Integer.
+# Preconditions:
+# the list is non-empty;
+# the elements in the list are positive integers.
+def changing_direction(elements: list[int]) -> int:
     # your code here
-    return []
+    down = [0, 0]
+    up = [0, 0]
+    for count, item in enumerate(elements):
+        # increase
+        if count > 0:
+            if item >= elements[count-1]:
+                up[1] += 1
+
+            else:
+                if up[1] != 0: up[0] += 1
+                up[1] = 0
+
+
+    return 0
 
 
 print("Example:")
-print(list(compress([5, 5, 5, 4, 5, 6, 6, 5, 5, 7, 8, 0, 0])))
+print(changing_direction([1, 2, 3, 4, 5]))
 
-assert list(compress([5, 5, 5, 4, 5, 6, 6, 5, 5, 7, 8, 0, 0])) == [
-    5,
-    4,
-    5,
-    6,
-    5,
-    7,
-    8,
-    0,
-]
-assert list(compress([1, 1, 1, 1, 2, 2, 2, 1, 1, 1])) == [1, 2, 1]
-assert list(compress([7, 7])) == [7]
-assert list(compress([])) == []
-assert list(compress([1, 2, 3, 4])) == [1, 2, 3, 4]
-assert list(compress([9, 9, 9, 9, 9, 9, 9])) == [9]
-assert list(compress([9, 9, 9, 9, 9, 9, 9, 0, 9, 9, 9, 9, 9, 9])) == [9, 0, 9]
+# These "asserts" are used for self-checking
+assert changing_direction([1, 2, 3, 4, 5]) == 0
+assert changing_direction([1, 2, 3, 2, 1]) == 1
+assert changing_direction([1, 2, 2, 1, 2, 2]) == 2
 
 print("The mission is done! Click 'Check Solution' to earn rewards!")
-
