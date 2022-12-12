@@ -511,30 +511,92 @@ Changing direction
 # Preconditions:
 # the list is non-empty;
 # the elements in the list are positive integers.
-def changing_direction(elements: list[int]) -> int:
+# def changing_direction(elements: list[int]) -> int:
+#     # your code here
+#     down = [0, 0]
+#     up = [0, 0]
+#     for count, item in enumerate(elements):
+#         # increase
+#         if count > 0:
+#             if item > elements[count-1]:
+#                 if down[1] != 0:
+#                     down[0] += 1
+#                     down[1] = 0
+#                 up[1] += 1
+#             elif item < elements[count-1]:
+#                 if up[1] != 0:
+#                     up[0] += 1
+#                     up[1] = 0
+#                 down[1] +=1
+#     return up[0]+down[0]
+#
+#
+# print("Example:")
+# print(changing_direction([1, 2, 3, 4, 5]))
+#
+# # These "asserts" are used for self-checking
+# assert changing_direction([1, 2, 3, 4, 5]) == 0
+# assert changing_direction([1, 2, 3, 2, 1]) == 1
+# assert changing_direction([1, 2, 2, 1, 2, 2]) == 2
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+Ascending List
+"""
+# Determine whether the list of elements is ascending such that each of its elements is strictly larger than (and not merely equal to) the preceding element. Empty list consider as ascending.
+# Input: A list with integers.
+# Output: Boolean.
+# def is_ascending(items: list[int]) -> bool:
+#     # your code here
+#     comp_items = []
+#     if items:
+#         for count, item in enumerate(items):
+#             if count == 0: comp_items.append(item)
+#             if count > 0 and item > items[count-1]: comp_items.append(item)
+#         if items == comp_items:
+#             return True
+#         else:
+#             return False
+#     return True
+#
+#
+# print("Example:")
+# print(is_ascending([-5, 10, 99, 123456]))
+#
+# assert is_ascending([-5, 10, 99, 123456]) == True
+# assert is_ascending([99]) == True
+# assert is_ascending([4, 5, 6, 7, 3, 7, 9]) == False
+# assert is_ascending([]) == True
+# assert is_ascending([1, 1, 1, 1]) == False
+# assert is_ascending([1, 3, 3, 5]) == False
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+Absolute Sorting
+"""
+# Let's try some sorting. Here is an array with the specific rules.
+# The array (a list) has various numbers. You should sort it, but sort it by absolute value in ascending order. For example, the sequence (-20, -5, 10, 15) will be sorted like so: (-5, 10, 15, -20). Your function should return the sorted list or tuple.
+# Precondition: The numbers in the array are unique by their absolute values.
+# Input: An array of numbers , a tuple..
+# Output: The list or tuple (but not a generator) sorted by absolute values in ascending order.
+# Addition: The results of your function will be shown as a list in the tests explanation panel.
+# How it is used: Sorting is a part of many tasks, so it will be useful to know how to use it.
+# Precondition : len(set(abs(x) for x in array)) == len(array)
+# 0 < len(array) < 100
+# all(isinstance(x, int) for x in array)
+# all(-100 < x < 100 for x in array)
+def checkio(values: list) -> list:
     # your code here
-    down = [0, 0]
-    up = [0, 0]
-    for count, item in enumerate(elements):
-        # increase
-        if count > 0:
-            if item >= elements[count-1]:
-                up[1] += 1
 
-            else:
-                if up[1] != 0: up[0] += 1
-                up[1] = 0
-
-
-    return 0
+    #return [(lambda item: abs(item))(item) for item in values]
+    return [abs(item) for item in values]
 
 
 print("Example:")
-print(changing_direction([1, 2, 3, 4, 5]))
+print(checkio([-20, -5, 10, 15]))
 
-# These "asserts" are used for self-checking
-assert changing_direction([1, 2, 3, 4, 5]) == 0
-assert changing_direction([1, 2, 3, 2, 1]) == 1
-assert changing_direction([1, 2, 2, 1, 2, 2]) == 2
+assert checkio([-20, -5, 10, 15]) == [-5, 10, 15, -20]
+assert checkio([1, 2, 3, 0]) == [0, 1, 2, 3]
+assert checkio([-1, -2, -3, 0]) == [0, -1, -2, -3]
 
 print("The mission is done! Click 'Check Solution' to earn rewards!")
