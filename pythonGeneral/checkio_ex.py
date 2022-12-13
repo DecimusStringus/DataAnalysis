@@ -511,6 +511,23 @@ Changing direction
 # Preconditions:
 # the list is non-empty;
 # the elements in the list are positive integers.
+
+# Best solution 1:
+# def changing_direction(elements: list) -> int:
+#     dir = count = 0
+#     for a, b in zip(elements, elements[1:]):
+#         dir2 = a - b
+#         if dir2:
+#             if dir2 * dir < 0: count += 1
+#             dir = dir2
+#     return count
+
+# Best solution 2:
+# def changing_direction(elements: list) -> int:
+#     cmp = lambda a, b: (a > b) - (a < b)
+#     updown = lambda xs: list(filter(None, map(cmp, xs, xs[1:])))
+#     return len(updown(updown(elements)))
+
 # def changing_direction(elements: list[int]) -> int:
 #     # your code here
 #     down = [0, 0]
@@ -585,18 +602,60 @@ Absolute Sorting
 # 0 < len(array) < 100
 # all(isinstance(x, int) for x in array)
 # all(-100 < x < 100 for x in array)
-def checkio(values: list) -> list:
+# def checkio(values: list) -> list:
+#     # your code here
+#     #return [(lambda item: abs(item))(item) for item in values]
+#     #return [abs(item) for item in values]
+#     #list_c = [(list_a[i], list_b[i]) for i in range(0, len(list_a))]
+#     #sorted(two_lists, key=lambda x: x[1])
+#     #two_lists = list(zip(abs_values, values)).sort(key=lambda x: x[1])
+#     abs_values = [abs(item) for item in values]
+#     two_lists = sorted(list(zip(abs_values, values)), key=lambda x: x[0])
+#     return [item[1] for item in two_lists]
+#
+# print("Example:")
+# print(checkio([-20, -5, 10, 15]))
+#
+# assert checkio([-20, -5, 10, 15]) == [-5, 10, 15, -20]
+# assert checkio([1, 2, 3, 0]) == [0, 1, 2, 3]
+# assert checkio([-1, -2, -3, 0]) == [0, -1, -2, -3]
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+Words Order
+"""
+# You have a text and a list of words. You need to check if the words in a list appear in the same order as in the given text.
+# Cases you should expect while solving this challenge:
+# a word from the list is not in the text - your function should return False;
+# any word can appear more than once in a text - use only the first one;
+# two words in the given list are the same - your function should return False;
+# the condition is case sensitive, which means 'hi' and 'Hi' are two different words;
+# the text includes only English letters and spaces.
+# Input: Two arguments. The first one is a given text, the second is a list of words.
+# Output: A bool.
+def words_order(text: str, words: list) -> bool:
     # your code here
-
-    #return [(lambda item: abs(item))(item) for item in values]
-    return [abs(item) for item in values]
+    return False
 
 
 print("Example:")
-print(checkio([-20, -5, 10, 15]))
+print(words_order("hi world im here", ["world", "here"]))
 
-assert checkio([-20, -5, 10, 15]) == [-5, 10, 15, -20]
-assert checkio([1, 2, 3, 0]) == [0, 1, 2, 3]
-assert checkio([-1, -2, -3, 0]) == [0, -1, -2, -3]
+assert words_order("hi world im here", ["world", "here"]) == True
+assert words_order("hi world im here", ["here", "world"]) == False
+assert words_order("hi world im here", ["world"]) == True
+assert words_order("hi world im here", ["world", "here", "hi"]) == False
+assert words_order("hi world im here", ["world", "im", "here"]) == True
+assert words_order("hi world im here", ["world", "hi", "here"]) == False
+assert words_order("hi world im here", ["world", "world"]) == False
+assert words_order("hi world im here", ["country", "world"]) == False
+assert words_order("hi world im here", ["wo", "rld"]) == False
+assert words_order("", ["world", "here"]) == False
+assert words_order("hi world world im here", ["world", "world"]) == False
+assert (
+    words_order("hi world world im here hi world world im here", ["world", "here"])
+    == True
+)
 
 print("The mission is done! Click 'Check Solution' to earn rewards!")
+
