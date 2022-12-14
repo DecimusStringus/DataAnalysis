@@ -633,29 +633,93 @@ Words Order
 # the text includes only English letters and spaces.
 # Input: Two arguments. The first one is a given text, the second is a list of words.
 # Output: A bool.
-def words_order(text: str, words: list) -> bool:
+# def words_order(text: str, words: list) -> bool:
+#     # your code here
+#     word_2d = []
+#     if len(words) == len(dict.fromkeys(words)):
+#         for word in words:
+#             if word not in text.split(' '): return False
+#             word_2d.append([word, text.split(' ').index(word)])
+#         sorted2d = sorted(word_2d, key=lambda x: x[1])
+#         if words == [item[0] for item in sorted2d]: return True
+#     return False
+#
+# print("Example:")
+# print(words_order("hi world im here", ["world", "here"]))
+#
+# assert words_order("hi world im here", ["world", "here"]) == True
+# assert words_order("hi world im here", ["here", "world"]) == False
+# assert words_order("hi world im here", ["world"]) == True
+# assert words_order("hi world im here", ["world", "here", "hi"]) == False
+# assert words_order("hi world im here", ["world", "im", "here"]) == True
+# assert words_order("hi world im here", ["world", "hi", "here"]) == False
+# assert words_order("hi world im here", ["world", "world"]) == False
+# assert words_order("hi world im here", ["country", "world"]) == False
+# assert words_order("hi world im here", ["wo", "rld"]) == False
+# assert words_order("", ["world", "here"]) == False
+# assert words_order("hi world world im here", ["world", "world"]) == False
+# assert (
+#     words_order("hi world world im here hi world world im here", ["world", "here"])
+#     == True
+# )
+#
+# print("The mission is done! Click 'Check Solution' to earn rewards!")
+"""
+Sort by Extension
+"""
+# ou are given a list of files. You need to sort this list by the file extension. The files with the same extension (or without one) should be sorted by name.
+#
+# Some possible cases:
+#
+# Filename cannot be an empty string;
+# Sorting order: files without name, files without extension, files with name and extension;
+# Filename ".config" or "config." is all name with an empty extension;
+# Filename like "str1.str2.str3" has an extension "str3" and a name "str1.str2";
+# Filename like ".str1.str2" has an extension "str2" and a name ".str1".
+# Input: List of strings.
+#
+# Output: List of strings.
+def sort_by_ext(files: list[str]) -> list[str]:
     # your code here
-    return False
+    return []
 
 
 print("Example:")
-print(words_order("hi world im here", ["world", "here"]))
+print(sort_by_ext(["1.cad", "1.bat", "1.aa"]))
 
-assert words_order("hi world im here", ["world", "here"]) == True
-assert words_order("hi world im here", ["here", "world"]) == False
-assert words_order("hi world im here", ["world"]) == True
-assert words_order("hi world im here", ["world", "here", "hi"]) == False
-assert words_order("hi world im here", ["world", "im", "here"]) == True
-assert words_order("hi world im here", ["world", "hi", "here"]) == False
-assert words_order("hi world im here", ["world", "world"]) == False
-assert words_order("hi world im here", ["country", "world"]) == False
-assert words_order("hi world im here", ["wo", "rld"]) == False
-assert words_order("", ["world", "here"]) == False
-assert words_order("hi world world im here", ["world", "world"]) == False
-assert (
-    words_order("hi world world im here hi world world im here", ["world", "here"])
-    == True
-)
+assert sort_by_ext(["1.cad", "1.bat", "1.aa"]) == ["1.aa", "1.bat", "1.cad"]
+assert sort_by_ext(["1.cad", "1.bat", "1.aa", "2.bat"]) == [
+    "1.aa",
+    "1.bat",
+    "2.bat",
+    "1.cad",
+]
+assert sort_by_ext(["1.cad", "1.bat", "1.aa", ".bat"]) == [
+    ".bat",
+    "1.aa",
+    "1.bat",
+    "1.cad",
+]
+assert sort_by_ext(["1.cad", "1.bat", ".aa", ".bat"]) == [
+    ".aa",
+    ".bat",
+    "1.bat",
+    "1.cad",
+]
+assert sort_by_ext(["1.cad", "1.", "1.aa"]) == ["1.", "1.aa", "1.cad"]
+assert sort_by_ext(["1.cad", "1.bat", "1.aa", "1.aa.doc"]) == [
+    "1.aa",
+    "1.bat",
+    "1.cad",
+    "1.aa.doc",
+]
+assert sort_by_ext(["1.cad", "1.bat", "1.aa", ".aa.doc"]) == [
+    "1.aa",
+    "1.bat",
+    "1.cad",
+    ".aa.doc",
+]
 
 print("The mission is done! Click 'Check Solution' to earn rewards!")
+
 
