@@ -3,9 +3,6 @@ from bs4 import BeautifulSoup
 import urllib.request as ur
 import requests
 
-"""
-Read the URL function
-"""
 def get_page(url):
     """Download a webpage and return a beautiful soup doc"""
     # add header to emulate opening via browser
@@ -18,22 +15,36 @@ def get_page(url):
     doc = BeautifulSoup(page_content, 'html.parser')
     return doc
 
-# Enter a stock symbol
-company = 'MSFT'
-# URL link
-url_is = 'https://finance.yahoo.com/quote/' + company + '/financials?p=' + company
-url_bs = 'https://finance.yahoo.com/quote/' + company +'/balance-sheet?p=' + company
-url_cf = 'https://finance.yahoo.com/quote/' + company + '/cash-flow?p=' + company
-doc = get_page(url_is)
-"""
-Data Manipulation
-"""
-ls = []  # Create empty list
-# Find all data structure that is ‘div’ and financial row
-for l in doc.find_all('div', {'class': "D(tbr) fi-row Bgc($hoverBgColor):h"}):
-    ls.append(l.getText(';').split(';')) # add each element one by one to the list
-#ls = [e for e in ls if e not in ('Operating Expenses', 'Non-recurring Events')]  # Exclude those columns
-#new_ls = list(filter(None,ls))
-Income_st = pd.DataFrame(ls[0:])
+def get_data_frame(report_type: str, company: str):
+    """
+    Returns pandas dataframe with financial report data
+        Parameters:
+            report_type (str):
+                'is' - Income Statement
+                'bs' - Balance Sheet
+                'cf' - Cash Flow
+            company (str): company name at yahoo finance
+    """
+    # URL link definition
+    url_common = 'https://finance.yahoo.com/quote/'
+    if report_type == 'is':
+        url = url_common + company + '/financials?p=' + company
+    elif report_type == 'bs':
+        url = url_common + company +'/balance-sheet?p=' + company
+    elif report_type == 'cf':
+        url = url_common + company + '/cash-flow?p=' + company
+
+    # Scrape data and transform to pandas dataframe
+    ls = []  # Create empty list
+    # Find all data structure that is ‘div’ and fi-row
+    for bs4_tag in get_page(url).find_all('div', {'class': "D(tbr) fi-row Bgc($hoverBgColor):h"}):
+        ls.append(bs4_tag.getText(';').split(';')) # add each element one by one to the list
+    return pd.DataFrame(ls[0:])
+    # examples of filtering data:
+    # ls = [e for e in ls if e not in ('Operating Expenses', 'Non-recurring Events')]  # Exclude those columns
+    # new_ls = list(filter(None,ls))
+
+
+Income_st = get_data_frame('is', 'MSFT')
 print(Income_st.head())
 
