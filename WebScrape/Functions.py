@@ -53,4 +53,4 @@ def get_data_frame(report_type: str, company: str):
     pd_df = pd.DataFrame(ls)
     pd_df.columns = ls_header
 
-    return pd_df
+    return pd_df  # return pandas dataframe
