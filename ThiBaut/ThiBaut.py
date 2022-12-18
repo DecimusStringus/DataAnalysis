@@ -3,6 +3,7 @@ import telebot
 # connect to the telegram bot
 t_file = open(r'C:\Users\48885\Documents\Python Knowledge\ThiBaut_t.txt')
 token_id = t_file.read()
+t_file.close()
 bot = telebot.TeleBot(token_id)
 # Add start command /start
 @bot.message_handler(commands=["start"])
